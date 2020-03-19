@@ -29,7 +29,6 @@
         $.when(pt, obv, meds).fail(onError);
 
         $.when(pt, obv, meds).done(function(patient, obv, meds) {
-          console.log(meds)
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
 
@@ -66,6 +65,8 @@
           p.ldl = getQuantityValueAndUnit(ldl[0]);
 
           p.meds = meds
+          console.log("pmeds")
+          console.log(p.meds)
 
           ret.resolve(p);
         });
@@ -90,7 +91,6 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
-      meds: {value: ''}
     };
   }
 
