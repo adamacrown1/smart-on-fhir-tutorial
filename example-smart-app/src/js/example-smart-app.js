@@ -23,7 +23,7 @@
                   });
 
         var meds = smart.patient.api.fetchAll({
-            type: 'MedicationOrder';
+            type: 'MedicationOrder'
         })
 
         $.when(pt, obv, meds).fail(onError);
