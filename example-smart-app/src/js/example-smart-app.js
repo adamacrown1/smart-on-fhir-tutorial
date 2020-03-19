@@ -22,9 +22,14 @@
                     }
                   });
 
-        $.when(pt, obv).fail(onError);
+        var meds = smart.patient.api.fetchAll({
+            type: 'MedicationOrder';
+        })
 
-        $.when(pt, obv).done(function(patient, obv) {
+        $.when(pt, obv, meds).fail(onError);
+
+        $.when(pt, obv, meds).done(function(patient, obv, meds) {
+          console.log(meds)
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
 
@@ -59,6 +64,8 @@
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
+
+
 
           ret.resolve(p);
         });
